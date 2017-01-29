@@ -132,5 +132,15 @@ if __name__ == "__main__":
 
 	encoded_final = ''.join(encoded)
 	print "[+] Encoding complete! Encoded payload length:", str(len(encoded_final))
-
+	print "Raw payload:"
 	print encoded_final
+
+	print "Pythonic payload:"
+	hex_final = "buf = \""
+	for idx, c in enumerate(encoded_final):
+		if idx % 10 == 0:
+			hex_final += "\"\nbuf += \""
+		hex_final += '\\' + hex(ord(c))[1:]
+
+	hex_final += "\""
+	print hex_final
